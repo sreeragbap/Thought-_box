@@ -1,0 +1,82 @@
+syntax ="proto3";
+package country;
+
+option go_package="domain/country";
+
+service Country{
+    rpc Create(Payload)returns(Response){}
+    rpc Update(Payload)returns(Response){}
+    rpc GetByID(GetRequest) returns(Payload){}
+    rpc Delete(GetRequest) returns(Response){}
+    rpc GetAll(Empty) returns(stream Payload){}
+}
+
+message Payload {
+
+  string 	Id									              =1;
+  string 	Name							  	            =2;
+  string 	Code						  		            =3;
+  string 	NumericISOCode		                =4;
+  string 	Currency							            =5;
+  string 	QCBCode								            =6;
+  string 	TFCode								            =7;
+  string 	XMCode								            =8;
+  string 	BFCode								            =9;
+  string 	XMDialCode						            =10;
+  string 	MIRSCode							            =11;
+  int64  	IsCoreBanking		  		            =12;
+  int64  	IsActive							            =13;
+  int64  	IsOnlineEnable				            =14;
+  int64   IsDeleted                         =15;
+  int64   IsLocal                           =16;
+  string  Image                             =17;
+  int64   IsFATF                            =18;
+  string  Risk                              =19;
+  string  Source                            =20;
+  string  Reference                         =21;
+  int64   IsReceiveModeBank                 =22;
+  int64   IsReceiveModeFastCash             =23;
+  int64   IsReceiveModeMobileMoney          =24;
+  repeated 	PayloadDetails CountryDetails   =25;
+  int64   IsAPG                             =26;
+  int64   IsCFATF                           =27;
+  int64   IsEAG                             =28;
+  int64   IsESSAMLG                         =29;
+  int64   IsGABAC                           =30;
+  int64   IsGAFKAT                          =31;
+  int64   IsGIABA                           =32;
+  int64   IsMENAFATF                        =33;
+  int64   IsMONEYVAL                        =34;
+  string  Code2                             =35;
+  int64   IsReceiveModeUtilityPayment       =36;
+
+}
+
+message PayloadDetails {
+
+  string 	Id									   =1;
+  string 	Currency							 =2;
+  string 	Country								 =3;
+  int64   IsDeleted              =4;
+}
+
+message Empty{
+
+}
+
+message GetRequest{
+    string    Id        =1;
+    string    Currency  =2;
+    string    Country   =3;
+    string 	  Code			=4;
+    string 	  Name    	=5;
+}
+
+message Response{
+
+  string     Id                  =1;
+  string     ResponseStatus      =2;
+  string     ResponseData        =3;
+  string     ResponseCode        =4;
+  bool       Result              =5;
+}

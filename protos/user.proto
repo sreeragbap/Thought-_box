@@ -1,0 +1,708 @@
+syntax = "proto3";
+
+package user;
+
+option go_package="domain/user";
+
+service User{
+	rpc GetById(GetReq) returns (Payload){}
+	rpc Login(LoginPayload) returns (LoginResponsePayload){}
+	rpc LogOut(Token) returns (Response){} 
+	rpc LoginOTP(OTPPayload) returns (Response){}
+	rpc GetOfflineUsersByIds(GetReq) returns (stream UserMinResponse){}
+}
+
+message UserMinResponse{
+	string Id = 1;
+	string FirstName =2;
+	string MiddleName =3;
+	string LastName =4;
+	string IDNo = 5;
+	string UserName =6;
+	string Password =7;
+	string StaticPIN =8; 
+	string IDTypeID =11;
+	string IDTypeName =12;
+	string IDExpiry =13;
+	string IDIssue  =14;
+	string IDIssuedCountryID =15;
+	string IDIssuedCountryName =16;
+ 	string IDIssuedCountryCode =17;
+	string BranchCode =18;
+	string BranchName =19;
+	string Email  =20;
+	string PrivilegeGroupName =21;
+	string PrivilegeGroupId =22;
+	string Contact  =23;
+	string FullName =24;
+	string CreatedDate =25;
+	string CreatedTime =26;
+	string CreatedByName =27;
+	
+	
+}
+
+message Token{
+	string LastToken =1;
+}
+
+message Payload{
+	
+	string Id =1;
+	string FirstName =2;
+	string MiddleName =3;
+	string LastName =4;
+	string ArabicName =5;
+	string CityID =6;//town
+	string StateID =7;
+	string DistrictID =8;
+	string OtherDetails =9;
+	string TireID =10;
+	string CountryID =11;
+	string CountryOfBirthID =12;
+	string CurrencyID =13;
+	string CurrencyName=14;
+	string NationalityID =15;
+	string NationalityName =16;
+	string Glacc =17;
+	string UnfixAcc =18;
+	string CustomerType =19;
+	string Type =20;
+	string ResidentStatus =21;
+	string Category =22;
+	int64 IsBank =23;
+	int64 IsExchange =24;
+	int64 IsUATPermitted =25;
+	string UserName =26;
+	string Password =27;
+	string DOB =28;
+	string Sex =29;
+	string Employer =30;
+	string ProffesionalDetailID =31;
+	string SalaryID =32;
+	string SalaryName =33;
+	string PassportNo =34;
+	string IDNo =35;
+	string IDIssuedCountryId =36;
+	string IDTypeID =37;
+	string IDTypeName =38;
+	string IDIssue =39;
+	string IDExpiry =40;
+	string VisaNo  =41;
+	string VisaIssue =42;
+	string VisaExpiry =43;
+	string TradeLicenseNo =44;
+	string TradeLicenseIssue =45;
+	string TradeLicenseExpiry =46;
+	string ComputerCardNo =47;
+	string ComputerCardIssue =48;
+	string ComputerCardExpiry =49;
+    repeated SponsorArrayInfo SponsorInfo =50;
+    string Email =51;
+    string Contact =52;
+    string LoyaltyCardNo =53;
+    string ComplianceStatus =54;
+    string TempPostalCode =55;
+    string TempCountryID =56;
+    string TempCityTown =57;
+    string TempAddress1 =58;
+    string POBox =59;
+    string DailyFrequencyLimit =60;
+    string WeeklyFrequencyLimit =61;
+    string MonthlyFrequencyLimit =62;
+    string DailyVolumeLimit =63; //decimal DataType
+    string WeeklyVolumeLimit =64; //decimal DataType
+    string MonthlyVolumeLimit =65; //decimal DataType
+    string DailyTransactionLimit =66; //decimal DataType
+    int64 IsIntellexAdmin =67; 
+    int64 IsOnline =68;
+    int64 IsOnlineKYC =69;
+    int64 Activated =70;
+    int64 IsDeleted =71;
+    int64 IsStaticPIN =72;
+    int64 IsCorporate =73;
+    int64 IsCashier =74;
+    string CorporateActivityID =75;
+    string CorporateActivityDetail =76;
+    string AuthorizedPerson =77;
+    string Designation =78;
+    string StaticPIN =79;
+    string LanguageId =80;
+    string PrivilegeGroupName =81;
+ 	string PromotionalGroup =82;
+	string LoginFailedCount =83;
+	string LastLoginDate =84;
+	string LastLoginTime =85;
+	string LastToken =86;
+	string LoginOTP =87;
+	string LoginOTPResendCount =88;
+	string RegisterOTP =89;
+	string RegisterOTPResendCount =90;
+	int64 IsRegisterOTPApproved =91;
+	int64 IsAndroidBiometric =92;
+	string AndroidBiometricToken =93;
+	string AndroidBiometricDevice =94;
+	string AndroidBiometricOTP =95;
+	string AndroidBiometricOTPResendCount =96;
+	int64 IsAndroidBiometricConfirmed =97;
+	int64 IsIOSBiometric =98;
+	string IOSBiometricToken =99;
+	string IOSBiometricDevice =100;
+	string IOSBiometricOTP =101;
+	string IOSBiometricOTPResendCount =102;
+	int64 IsIOSBiometricConfirmed =103;
+	int64 IsGuidedKYC =104;
+	string BiometricToken =105;
+	string BiometricOTP =106;
+	string BiometricDevice =107;
+	string Platform =108;
+	string IOSDeviceToken =109;
+	string AndroidDeviceToken =110;
+	int64 IsAuthenticLogin =111;
+	string ComplianceToken =112;
+	string APIToken =113;
+	string SignatureFile =114;
+	string VideoFile =115;
+	string BranchCode =116;
+	string BranchName =117;
+	string ComplianceRating =118;
+	repeated UserIDFile IDFiles =119;
+	string ReferralCode =120;
+	string CreatedByID =121;
+	string CreatedByName =122;
+	string CreatedBranch =123;
+	string CreatedDate =124;
+	string CreatedTime =125;
+	string LastEditedByID =126;
+	string LastEditedByName =127;
+	string LastEditedDate =128;
+	string LastEditedTime =129;
+	int64 IsOutsideCountry =130;
+	int64 IsDocumentArchived =131;
+	string TransactionPIN =132;
+	int64 IsEnabled =133;
+	int64 ForexEnabled =134;
+	int64 TransactionEnabled =135;
+	int64 OnlineTransactionEnabled =136;
+	string FixedPIN =137;
+	int64 IsKYCUpdateApproved =138; 
+	repeated UserAdditionalDocuments AdditionalDocuments =139;
+	string CountryName =140;
+	string StateName =141;
+	string CityName =142;
+	string TownID =143;
+ 	string TownName =144;
+	string DistrictName =145;
+	string CountryOfBirthName =146;
+	string TireName =147;
+	string ProffesionalDetailName =148;
+	string TempCountryName =149;
+	string CorporateActivityName =150;
+	int64 IsIdVerified =151;
+	int64 IsSOAVerified =152;
+	int64 IsPOFVerified =153;
+	string Address1 =154;
+	string Address2 =155;
+	string TempAddress2 =156;
+	string TempTown =157;
+	string EmployerAddress =158;
+	string EmployerTypeId =160;
+	string EmployerContact =161; 
+	string NationalityCode =162;
+	string CountryCode =163;
+	string NationalityFlag =164;
+	string CountryFlag =165;
+	string NationalityCurrencyCode =166;
+	string CountryCurrencyName =167;
+	string CountryCurrencyCode =168;
+	string NationalityCurrencyName =169;
+	string LanguageName =170;
+	string PrivilegeGroupId =171;
+	string IDIssuedCountryName =172;
+	string EmployerTypeName =173;
+	string Phone =174;
+	string IDIssuedCountryCode =175;
+	string BlackListed =176;
+	string RemittanceAccountName =177;
+	int64  IsFC =178;
+	string FCFixAccountCode =179;
+	string FCFixAccountName =180;
+	string FCUnFixAccountName =181;
+	string FCUnFixAccountCode =182;
+	int64 IsMetal =183;
+	string MetalFixAccountCode =184;
+	string MetalFixAccountName =185;
+	string MetalUnFixAccountCode =186;
+	string MetalUnFixAccountName =187;
+	string DeviceManufacturer =188;
+	string DeviceModelName =189;
+	string DeviceModelNumber =190;
+	string DeviceId =191;
+	string DeviceRegistrationDate =192;
+	string ForgotOTP =193;
+	string SystemUserId =194;
+	int64 IsSystemUser = 195;
+	int64 TokenExpiry =196;
+	string Message =197;
+	int64 IsAssisted =198;
+	string RegisterMode =199;
+	string RemittanceAccountCode =200;
+	int64 IsUnfixFc =201;
+	int64 IsUnfixMetal =202;
+	int64 IsCredit =203;
+	int64 IsRegistrationCompleted =204;
+	int64 IsRemittanceEnabled =205;
+	int64 IsForexEnabled =206;
+	int64 IsWPSEnabled =207;
+	string EmployerID =208;
+	string UserActivationDate =209;
+	string CreatedByUserName =210;
+	repeated UserSettlementAccountDetails SettlementAccountDetails =211;
+	string MolID =212;
+	string RoutingCode =213;
+	string charges =214;
+	string Months =215;
+	string ServiceCharge     =216;
+	string AgreementExpiry   =217;
+	string EmployeeID	     =218;
+	string	EmployeeName     =219;					
+	string	CompanyId	     =220;							                         
+	string	CompanyName	     =221;							                         		                            
+	string 	BankName	     =222;						                         
+	string 	BankCode	     =223;			                         
+	string 	BankAccountNo    =224;		           
+	string 	EmployeeMOLId    =225;	
+	string 	CompanyMOLId     =226;
+	int64  IsUsurathicard 	           =227;
+	string ShopNo			    	   =228;
+   string CountryOfTradeID	    	   =229;
+   string  CountryOfTradeName   	   =230;
+   string TRNNo				           =231;
+   int64 IsVATEnabled		           =232;
+   string GLAACName				       =233;
+   string GLAACID				       =234;
+   string GLAACCode				       =235;
+   string  FaxNo					   =236;
+   string  DisbursementChargeSlotId    =237;        
+   string  DisbursementChargeSlotName  =238;        
+   string  DisbursementChargeType      =239;        
+   string  DisbursementChargeFrom      =240;        
+   string  DisbursementChargeTo        =241;        
+   string  DisbursementCharge          =242;        
+   string NearestAirportName		   =243;
+   string NearestAirportId			   =245;
+   string IssueRegion				   =246;
+   string AuthRepresentative 		   =247;
+   string DateOfEstablishment		   =248;
+   string ExpectedAnnualActivityIndivual	=249;
+  string ExpectedAnnualActivityCorporate	=250;
+  ComplianceDetails UserComplianceDetails 	=251;
+  int64 IsNonWPSEnabled						=252;
+  string TempState							=253;
+repeated AuthorizedRepresentationDetails AuthorizedRepresentation =254;
+string WPSChargeAccountAccId      	=255;
+string WPSMainAccountAccId          =256;
+string WPSDisbursementAccountAccId  =257;
+int64 IsOnlineActivated			=258;
+string RegistrationChannel =259;
+string RegistrationSource  =260;
+int64 IsInsideCountry 	   =261;
+string RegistrationMode		=262;
+string CreatedBranchCode	=263;
+string EntityType									   =264;
+int64 IsCentralBankEnabled                             =265;
+string ExpectedAnnualIncomeFreequency 				   =266;
+string ExpectedAnnualIncomeVolume 					   =267;
+repeated  WatchlistMatchesDetails            WatchlistMatches   =268;
+string NearestAirportCode                          =269;
+string StateCode 								   =270;
+repeated  WatchlistMatchesDetails         		PepMatchList   =271;
+string IDTypeCode									=272;
+string ProfessionCode 								=273;
+string IbanNo										=274;
+string OnBoardingRisk								=275;
+int64 IsAuthenticateLogin							=276;	
+string ComplianceAction								=277;
+int64 IsComplianceHold								=278;
+ int64 IsComplianceReleased							=279;
+string ComplianceHitStatus							=280;
+string ComplianceHitResponse						=281; 
+string ComplianceActionSource						=282;
+int64 IsBackOfficeAcess							    =283;
+int64 IsMigratedData							    =284;
+string WPSChargeAccountName      	                =285;
+string WPSMainAccountName                           =286;
+string WPSDisbursementAccountName 					=287;
+string LoyaltyCardIssuedDate						=288;
+int64  LoyaltyCardEnabled 							=289; 
+string TPIN											=290;
+string Mpin											=291;	
+string EmailOTP										=292;
+string LegalType									=293;
+int64 Cust_Isdataupdated                            =294;
+int64 IsCenteralBankReported						=295;
+int64 IsCenteralBankAccepted						=296;
+string TRNNumber									=297;
+string CreditLimit									=298;
+
+}
+
+message OTPPayload{
+	string OTP =1;
+	string ID =2;
+}
+
+message Response{
+	
+bool  Result   =1;
+string  ResponseStatus  =2;
+string Id = 3;
+string  Token =4;
+
+}
+
+message GetReq{
+	string Id =1;
+	string SystemUserId =2;
+	string CustomerType =3;
+	string EmployerID =4;
+	string UserActivationDate =5;
+	string Type =6;
+	string AccountID =7;
+	string IDNo =8;
+	string AccID =9;
+	string Contact =10;
+	string CompanyId =11;
+	string CompanyName =12;
+	string EmployeeMolID =13;
+	string LoyaltyCardNo =14;
+	string FirstName	=15;
+	string MiddleName =16;
+	string LastName  =17;
+	string DOB  =18;
+	string Nationality =19;
+	string PrivilegeGroupName =20;
+	string IDs =21;
+	string PrivilegeGroupId =22;
+	string CompanyMOLId =23;
+	
+}
+
+message LoginPayload{
+	string UserName= 1;
+	string Password= 2;
+	string AndroidDeviceToken= 3;
+	string IOSDeviceToken =4;
+	string Mpin =5;
+	int64 IsOnline =6;
+}
+
+message LoginResponsePayload{
+
+string Id =1;
+bool  Result =2;
+string ResponseStatus =3; 
+LoginResponse UserPayload=4;
+}
+
+message LoginResponse{
+	
+	string Id =1;
+	string IDNo =2;
+	string CurrencyId =3;
+	string CurrencyName =4;
+	string CompanyName =5;
+	string BranchCode =6;
+	string BranchName =7;
+	string LanguageId =8;
+	int64 IsCorporate =9;
+	string Username =10;
+	string CountryCode =11;
+	string CountryName =12;
+	string CountryId =13;
+	string CountryFlag =14;
+	string NationalityCode =15;
+	string NationalityName =16;
+	string NationalityId =17;
+	string NationalityFlag =18; 
+	string NationalityCurrencyCode =19;
+	string CountryCurrencyName =20;
+	string CountryCurrencyCode =21;
+	string NationalityCurrencyName =22;
+	string LanguageName =23;
+	string PinMode =24;
+	string	RegisterOTP =25;                   
+	string	RegisterOTPResendCount =26;         
+	int64	IsRegisterOTPApproved =27;        
+	int64	IsAndroidBiometric =28;           
+	string	AndroidBiometricToken =29;         
+	string	AndroidBiometricDevice =30;         
+	string	AndroidBiometricOTP =31;           
+	string	AndroidBiometricOTPResendCount =32; 
+	int64	IsAndroidBiometricConfirmed =33;   
+	int64	IsIOSBiometric  =34;             
+	string	IOSBiometricToken =35;            
+	string	IOSBiometricDevice =36;            
+	string	IOSBiometricOTP =37;               
+	string	IOSBiometricOTPResendCount =38;     
+	int64	IsIOSBiometricConfirmed =39;     
+	string	IOSDeviceToken =40;               
+	string	AndroidDeviceToken =41;         
+	string FixedPIN =42;
+	string IdTypeId =43;
+	string IdTypeName =44;
+	string	IDIssue =45;
+	string	IDIssuedCountry =46; 
+	string IDExpiry =47;
+	string ReferralCode =48;
+	string Contact =49;
+	string Email =50;
+	string City =51;
+	string State =52;
+	string Address1 =53;
+	string Address2 =55;
+	int64 IsKYCUpdateApproved =56;
+	int64 IsOnline =57;
+	int64 IsUATPermitted =58;
+	int64 IsIntellexAdmin =59;
+	string DailyFrequencyLimit =60;
+	string WeeklyFrequencyLimit =61;
+	string MonthlyFrequencyLimit =62;
+	string DailyVolumeLimit =63; //decimal DataType
+	string WeeklyVolumeLimit =64; //decimal DataType
+	string MonthlyVolumeLimit =65; //decimal DataType
+	string DailyTransactionLimit =66; //decimal DataType 
+	string CityId =67;
+	string CityName =68;
+	string TownID =69;
+	string TownName =70;
+	string DistrictId =71;
+	string DistrictName =72;
+	string CountryOfBirthName =73;
+	string TireId =74;
+	string TireName =75;
+	string ProffesionalDetailName =76;
+	string TempCountryName =77;
+	string CorporateActivityName =78;
+	string FirstName =79;
+	string Middlename =80;
+	string LastName =81;
+	string LastToken =82;
+	string DeviceManufacturer =83;
+	string DeviceModelName =84;
+	string DeviceModelNumber =85;
+	string DeviceId =86;
+	string DeviceRegistrationDate =87;
+	string Platform =89;
+	string LastLoginDate =90;
+	string LastLoginTime =91;
+	int64 IsAssisted =92;
+	string RegisterMode =93;
+	string LoginOTP =94;
+	int64 IsSystemGenaratePIN =95;
+	string CustomerType		  =96;
+	int64 IsSuperAdmin	=97;
+	string EmployeeId =98;
+	string EmployeeName =99;
+	string CompanyId =100;
+	string BankName =101;
+	string BankCode =102;
+	string BankAccountNo =103;
+	string EmployeeMOLId =104;
+	string CompanyMOLId =105;
+	string RoutingCode =106;
+	string EntityId =107;
+	string MOLId =108;
+	string Charge =109;
+	string Name =110;
+	string MonthsToProcess =111;
+	string ServiceCharge = 112;
+	string AgreementExpiry =113;
+	string DisbursementChargeSlotId =114;
+	string DisbursementChargeSlotName =115;
+	string DisbursementChargeType =116;
+	string DisbursementChargeFrom =117;
+	string DisbursementChargeTo =118;
+	string DisbursementCharge =119;
+	string CompanyUsername =120;
+	string CompanyPassword =121;
+	int64 IsNonWps =122;
+	string WPSChargeAccountId =123;
+	string WPSMainAccountId =124;
+	string WPSDisbursementAccountId =125;
+	string IsUsurathiCard =126;
+	string WPSCompanyName = 127;
+	int64 IsWPSEnabled =128;
+	string Mpin =129;
+}
+
+message WatchlistMatchesDetails{
+	
+	string ID = 1;
+	string FName =2;
+	string LName =3;
+	string Action   =4;
+	string IDType   =5;
+	string IDNo 		=6;
+	string IDExpiryDate =7;
+	string Gender =8;
+	string DOB    =9;
+	string Country =10;
+	string Nationality =11;
+	string Type        =12;
+	string Category    =13;
+	string SubCategory =14; 
+	string UID         =15; 
+	string UserID      =16;
+}
+
+message AuthorizedRepresentationDetails{
+	string Id 		=1;
+	string FirstName =2;
+	string LastName =3;
+	string IDTypeName =4;
+	string IDTypeID =5;
+	string IDNo =6;
+	string IDExpiry =7;
+	string IDIssue =8;
+	string Contact =9;
+	string UserID =10;
+	string RepresentativeID =11;
+	string CompanyID =12;
+    string FromDate =13;
+    string ToDate =14;
+    int64 Open    =15;
+	
+}
+message ComplianceDetails{
+	string ID 				=1;
+	string UserID 			=2;
+	string ComplianceDate   =3;
+	string ComplianceTime   =4;
+	string Comment 		    =5;
+	string CreatedByID 		=6;
+	string CreatedByName	=7;
+}
+
+message UserSettlementAccountDetails{
+	string Id =1;
+	string AccountName =2;
+	string AccountCode =3;
+	string AccountID =4;
+	string Type =5;
+	string Mode =6;
+	string UserId =7;
+	string CurrencyID =8;
+	string CurrencyName =9;
+	string CurrencyCode =10;
+
+	
+}
+
+message UserAdditionalDocuments{
+    string Id                  =1;
+    string User                =2;
+    string DocumentType        =3;
+    string FileName            =4; 
+    string DocumentCategory    =5;
+    string Comments            =6;
+	string DocumentTypeName    =7;
+	int64 IsExpiryRequired     =8;
+    string ExpiryDate          =9;
+    string IssueDate           =10;
+    int64  IsMandatory         =11;
+    int64   IsIssueRequired    =12;
+    string IDTypeName 		   =13;
+	string IDTypeID			   =14;
+	string IDNo				   =15;
+	string IDIssueDate         =16;
+	string IDExpiryDate        =17;
+	string IDIssuedCountryCode =18;
+	string  IDIssuedCountryID  =19;
+	string IDIssuedCountryName =20;
+	string IDIssueRegionName   =21;
+	string IDIssueRegionID	   =22;
+	int64  IsPrimary		   =23;
+    string PageType			   =24;
+    int64 Priority 			   =25;
+}
+
+message SponsorArrayInfo{
+	string Id =1;
+	string Name =2;
+	string IDNo =3;
+	string PercentageOfShare =4;
+	string IdTypeID =5;
+	string IdTypeName =6;
+	int64  IsDeleted =7;
+	string SponsorIDNo =8;
+	string UserId =9;
+	string IDIssueDate =10;
+	string ExpiryDate =11;
+	string DOB =12;
+	string FirstName =13;
+	string LastName =14;
+	string NationalityID =15;
+	string NationalityName =16;
+	string Category			=17;
+	string VisaIssue =18;
+	string VisaExpiry =19;
+	string CountryOfBirthID =20;
+	string CountryOfBirthName =21;
+	string Type       =22;
+	string CorporateActivityID =23;
+	string CorporateActivityName =24;
+	string FullName =25;
+	string RegisteredIn  =26;
+	string ExistingId =27;
+	string SponsorType =28;
+	repeated UploadImageUnaryRequest  UploadImage  =29;
+	string Suffix =30;
+	string Accid =31;
+	string Parent =32;
+	string TypeCategory =33;
+	
+	}
+
+    message UserIDFile{
+	
+        string Id =1;
+        string UserId =2;
+        string FileName =3;
+        int64 IsDeleted =4;
+    }
+
+    message UploadImageUnaryRequest{
+        ImageInfo info = 1;
+        bytes chunk_data = 2;
+      }
+
+      message ImageInfo {
+        string ImageID = 1;
+        string ImageType = 2;
+        string UserId =3;
+        string DocumentType =4;
+        string DocumentCategory =5;
+        string Comments          =6;
+        string DocumentTypeName  =7;
+        int64 IsExpiryRequired   =8;
+        string ExpiryDate        =9;
+        string IssueDate         =10;
+        int64  IsMandatory       =11;
+        int64   IsIssueRequired  =12;
+       string IDTypeName 		   =13;
+      string IDTypeID			   =14;
+      string IDNo				   =15;
+      string IDIssueDate         =16;
+      string IDExpiryDate        =17;
+      string IDIssuedCountryCode =18;
+      string  IDIssuedCountryID  =19;
+      string IDIssuedCountryName =20;
+      string IDIssueRegionName =21;
+      string IDIssueRegionID	 =22;
+      int64 IsPrimary			 =23;
+      string PageType			 =24;
+      int64 IsMigratedData	 =25;
+      
+      }
+      
